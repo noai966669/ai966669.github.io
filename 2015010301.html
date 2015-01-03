@@ -145,13 +145,13 @@ a:hover {
 }
 
 h1 {
-	margin: 0px 0px 10px;	
+	margin: 0px 0px 10px;
 	font-weight: bold;
 }
 
 h2 {
 	border-bottom: 2px dotted #ccc;
-	margin: 5px 0px 15px;	
+	margin: 5px 0px 15px;
 }
 
 h6 {
@@ -168,7 +168,7 @@ blockquote {
 	-moz-border-radius:6px;
 	border-radius:6px;
 	color:  #333;
-	
+
 }
 
 ul, ol {
@@ -200,17 +200,33 @@ pre > code {
 
 </style></head>
 <body>
-<h1>Angularjs,phonegap,ionic,html,css,scss,javascript的关系</h1>
+<h2>1.    分支的学习</h2>
 
-<ol>
-<li> html是内容，css是内容格式，javascript是能描述这些内容动作的诸多脚本语言中的一种语言</li>
-<li> sass是CSS 预处理器框架</li>
-<li> Angularjs是一个javascript编写的库，是一个javascript框架，通过指令扩展了html的功能，通过表达式将数据绑定到html。</li>
-<li> Phonegap则是在网络编程语言HTML，css,javascript和iOS，Android的api之间创建了一个中间层，使得操作操作网络语言就能完成手机端app的编写，让程序猿不需要再去学习一门单独的app开发语言</li>
-<li> Ionic则是个高级的 HTML5 移动端应用框架，是个很漂亮的使用 HTML5 开发混合移动应用前端框架。他用html，css，javascript开发，采用了css中的scss和javascript编写的angularjs框架</li>
-</ol>
+<p>分支作用和名字相同，由于一个项目开发到一定程度后，在该项目已经完成的基础A上继续开发项目，接下来的工作有多个模块，且由不同的人开发，那么此时为了能让多个人同时开发，我们将A上打开多个分支，共开发人员开发，当开发完成后可以将开发的东西与A合并。</p>
 
-<h5>总结:phonegap让html，css，javascript网络开发语言开发移动端app成为可能，并且javascript已有了一个不错的库叫做angularjs,css也有一个常见的预处理框架sass,这两个东西结合起来有了一个新的移动端应用框架叫做ionic，他使得我们用网络开发语言开发的产品有更好的体验</h5>
+<p>当然这样将一个项目分成多个分支还有在其他方面的作用。</p>
 
+<p>比如在已有的项目B上，此时的项目B已经上线，此时你打开分支B1继续开发着其他需要增加的模块。突然上线的B出现了问题，于是你需要修改B，但这时你增加的模块功能刚写到一半，你需要放弃写到一半的功能去修改B吗？还是对已经出现的问题置之不理，直到功能新模块开发完成，再去处理B？自然都不行，此时你分支就可以帮助你，因为你是开了一个分支B1在B1上进行模块开发的，git可以帮助你保存这个模块开发到一半的状态，此时你可以直接切换到在没有开发模前的状态，为什么能回到这个状态？因为每次创建一个分支，git都会帮你保存一个另外的分支在这个十字路口，也就是说当你创建B1开发新模块的时候git会有一个指针指向开发新模块前的状态，你可以随时通过提取这个指针来回到这个状态。所以，现在就简单了，你可以直接切换到这个指针，并且在创建一个分支B2，在B2上修改这个问题，然后进行提交。然后再回到B1这个状态。</p>
+
+<p>一个需要注意的地方是很可能B2为了修复问题修改的内容恰巧在B1上也修改了，此时当B1提交的时候就会提醒你文件冲突，此时你就要自己手动选择到底保存在B1中修改的文件还是B2中的
+例子：</p>
+
+<p>我们在master中创建一个分支testbranch2，并且创建一个文件fileinbranchtest2，然后提交给服务器分支testbranch2</p>
+<div><img src="1.jpg"></div>
+<div><img src="2.jpg"></div>
+<div><img src="3.jpg"></div>
+<p>-bash-3.2$ git push origin testbranch2</p>
+
+<p>可以在服务器上看到testbranch2分支中比master文件中多了一个fileintestbranch2，master并未受到影响，说明分支上的改变相对于主线独立</p>
+<div><img src="4.png"></div>
+<div><img src="5.png"></div>
+
+<p>同样创建一个testbranch,与testbranch2一样的操作，创建fileintestbranch。发现testbranch2没有fileintestbranch,说明分支之间的改变是相对于其他分支是独立的。以上说明分支上的改变相对于主线和其他分支是独立的
+当我们将testbranch2并入master，跟踪新添加的文件，并提交操作</p>
+<div><img src="6.png"></div>
+<div><img src="7.png"></div>
+<p>发现master中多了一个文件fileintestbranch2,testbranch1中没有发送改变。说明主线上的改变也不会影响到分支。</p>
+<div><img src="8.png"></div>
+<div><img src="9.png"></div>
 </body>
 </html>
