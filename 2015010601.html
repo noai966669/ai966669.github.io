@@ -145,13 +145,13 @@ a:hover {
 }
 
 h1 {
-	margin: 0px 0px 10px;	
+	margin: 0px 0px 10px;
 	font-weight: bold;
 }
 
 h2 {
 	border-bottom: 2px dotted #ccc;
-	margin: 5px 0px 15px;	
+	margin: 5px 0px 15px;
 }
 
 h6 {
@@ -168,7 +168,7 @@ blockquote {
 	-moz-border-radius:6px;
 	border-radius:6px;
 	color:  #333;
-	
+
 }
 
 ul, ol {
@@ -219,17 +219,18 @@ sudo npm install -g phonegap</p>
 phonegap create forgithub
 cd forgithu
 ionic build ios
-这样三句分别创建了phonegap项目，然后进入项目目录，再基于创建的phonegap项目创建了一个可以在iOS平台上运行的helloword项目。创建 
+这样三句分别创建了phonegap项目，然后进入项目目录，再基于创建的phonegap项目创建了一个可以在iOS平台上运行的helloword项目。创建
 进入iOS打开helloWord项目，直接run有下图。</p>
-
+<div><img src="Image/2015010501/1.png"></div>
+<div><img src="Image/2015010501/2.png"></div>
 <h3>拓展（可以不看）：</h3>
 
 <p>上图helloworld这是创建的phonegap项目原生的一个demo,我们可以通过修改phonegap中的内容来重新生产新的iOS上的产品。我们可以进入下图目录</p>
-
+<div><img src="Image/2015010501/3.png"></div>
 <p>通过修改index.html验证。我们将该index修改如下</p>
-
+<div><img src="Image/2015010501/4.png"></div>
 <p>重新ionic build ios，然后iOS项目，运行后有下图效果</p>
-
+<div><img src="Image/2015010501/5.png"></div>
 <p>可见通过ionic 创建的iOS项目是基于phonegap的。</p>
 
 <h2>在这个iOS上写我们的插件</h2>
@@ -239,24 +240,26 @@ ionic build ios
 <h3>第一步：创建插件（plug-in）并写上插件内容</h3>
 
 <p>创建自己的oc类，并且修改包含的头文件(版本问题)</p>
-
+<div><img src="Image/2015010501/6.png"></div>
 <p>声明并实现一个方法作为javascript调用iOS的方法函数,注意此函数的参数需要设置为CDVInvokedUrlCommand，这个类中包含了传递过来的参数以及回调函数id，如下图</p>
-
+<div><img src="Image/2015010501/7.png"></div>
 <p>此处我们iOS端实现将传入的参数的第一个参数输出，并且判断该参数是不是位空，不空则返回成功执行函数，并返回内容“我是被返回的内容”。</p>
-
+<div><img src="Image/2015010501/8.png"></div>
 <p>创建好这个插件。到这里，我概念中插件的意思就是在混合开发中，在javascript可以与oc交流的基础上，使用oc代码完成特点的功能。所以我们只要能够让javascript能调用到这个functionInOc:add函数就算是成功了。</p>
 
 <h3>第二步：写js端代码</h3>
 
 <p>js代码可以直接写在html中，也可以单独创建一个js文件，通过html调用来执行。此处使用直接写的方式。修改html如下</p>
-
+<div><img src="Image/2015010501/9.png"></div>
 <p>cordova.exec(a,b,c,d，e)（参数解释见：<a href="http://docs.phonegap.com/en/4.0.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide%EF%BC%89">http://docs.phonegap.com/en/4.0.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide）</a>
-五个参数分别是成功后执行a,失败后执行b,c为插件在js中的映射名称（之后会讲），d位函数名，d为参数。</p>
+五个参数分别是成功后执行a,失败后执行b,c为插件在js中的映射名称（之后会讲），d位函数名，e为参数。</p>
 
 <h3>第三步：</h3>
 
-<p>到第二步我们已经让js去调用一个函数，但这个函数在哪个插件中还没告诉他，我们只告诉他这个类在js映射的名字是什么，那么在oc中这个类叫什么还没告诉js，所以我们需要在下图文件中添加一个映射，下图中右边红色圈内的是添加的内容。 
-至此如果phonegap版本在2.9.0以前那么我们就已经完成了插件的制作，运行有效果如下。说明javascript成功执行了oc代码</p>
-
+<p>到第二步我们已经让js去调用一个函数，但这个函数在哪个插件中还没告诉他，我们只告诉他这个类在js映射的名字是什么，那么在oc中这个类叫什么还没告诉js，所以我们需要在下图文件中添加一个映射，下图中右边红色圈内的是添加的内容。</p>
+<div><img src="Image/2015010501/10.png"></div>
+<p>至此如果phonegap版本在2.9.0以前那么我们就已经完成了插件的制作，运行有效果如下。说明javascript成功执行了oc代码</p>
+<div><img src="Image/2015010501/11.png"></div>
+<div><img src="Image/2015010501/12.png"></div>
 </body>
 </html>
